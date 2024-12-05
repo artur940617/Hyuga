@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon-32x32.png" sizes="32x32" type="image/png">
+    <title>Hotel Hyuga on the Edge</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Основные стили */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            background: #013220;
+            color: white;
+            padding: 1.5rem 0;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .gallery img {
+            width: 30%;
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .contacts {
+            text-align: center;
+            margin: 2rem;
+        }
+
+        .contacts h2 {
+            color: #005f73;
+        }
+
+        .contact-icons a {
+            font-size: 2rem;
+            color: #005f73;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+
+        .contact-icons a:hover {
+            color: #013220;
+        }
+
+        footer {
+            text-align: center;
+            background: #013220;
+            color: white;
+            padding: 1rem 0;
+        }
+
+        .company-info {
+            margin-top: 1rem;
+        }
+
+        .company-info a {
+            color: #ffdd57;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        .company-info a:hover {
+            text-decoration: underline;
+        }
+
+        .company-info img {
+            display: block;
+            margin: 10px auto;
+            width: 80px;
+            height: auto;
+        }
+
+        /* Видео-заставка */
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-wrapper {
+            width: 300px; /* Диаметр круга */
+            height: 300px;
+            border-radius: 50%; /* Делаем круг */
+            overflow: hidden; /* Обрезаем содержимое за пределами круга */
+            background-color: #000; /* Добавляем фон для гладкости */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Добавляем тень */
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Заполняем круг, сохраняя пропорции */
+            display: block; /* Убираем возможные артефакты */
+        }
+    </style>
+</head>
+<body>
+    <!-- Видео-заставка -->
+    <div class="video-container">
+        <div class="video-wrapper">
+            <video autoplay muted playsinline>
+                <source src="nfcL.mp4" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+        </div>
+    </div>
+
+    <header>
+        <h1>Welcome HYUGA hotel </h1>
+    </header>
+    <main>
+        <section class="gallery">
+            <img src="photo(1).jpg" alt="Фото отеля 1">
+            <img src="photo(2).jpg" alt="Фото отеля 2">
+            <img src="photo(3).jpg" alt="Фото отеля 3">
+        </section>
+        <section class="contacts">
+            <h2>Contact Us</h2>
+            <div class="contact-icons">
+                <a href="tel:+37498699601" aria-label="Telephone"><i class="fas fa-phone"></i></a>
+                <a href="https://instagram.com/hyuga_hotel" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="company-info">
+            <p>Created by <strong>NFC Leap</strong></p>
+            <a href="https://instagram.com/nfc_leap" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://t.me/nfcleap" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+            <img src="nfcl.png" alt="NFC Leap Logo">
+        </div>
+    </footer>
+
+    <script>
+        // Удаление загрузчика после загрузки страницы
+        window.addEventListener("load", function() {
+            document.body.classList.add("loaded");
+        });
+
+        const videoContainer = document.querySelector('.video-container');
+        const video = videoContainer.querySelector('video');
+
+        // Скрываем видео после его завершения
+        video.addEventListener('ended', () => {
+            videoContainer.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Включить прокрутку
+        });
+    </script>
+</body>
+</html>
