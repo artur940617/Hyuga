@@ -36,6 +36,12 @@
             max-width: 300px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
         }
 
         .contacts {
@@ -44,18 +50,38 @@
         }
 
         .contacts h2 {
-            color: #005f73;
+            color: #013220;
         }
 
         .contact-icons a {
             font-size: 2rem;
-            color: #005f73;
+            color: #013220;
             margin: 0 1rem;
             text-decoration: none;
         }
 
         .contact-icons a:hover {
-            color: #013220;
+            color: #dbaf00;
+        }
+
+        .save-contact {
+            text-align: center;
+            margin: 2rem;
+        }
+
+        #save-contact-btn {
+            background-color: #013220;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #save-contact-btn:hover {
+            background-color: #dbaf00;
         }
 
         footer {
@@ -85,51 +111,11 @@
             width: 80px;
             height: auto;
         }
-
-        /* Видео-заставка */
-        .video-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 10;
-            background-color: black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .video-wrapper {
-            width: 300px; /* Диаметр круга */
-            height: 300px;
-            border-radius: 50%; /* Делаем круг */
-            overflow: hidden; /* Обрезаем содержимое за пределами круга */
-            background-color: #000; /* Добавляем фон для гладкости */
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Добавляем тень */
-        }
-
-        .video-wrapper video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Заполняем круг, сохраняя пропорции */
-            display: block; /* Убираем возможные артефакты */
-        }
     </style>
 </head>
 <body>
-    <!-- Видео-заставка -->
-    <div class="video-container">
-        <div class="video-wrapper">
-            <video autoplay muted playsinline>
-                <source src="nfcL.mp4" type="video/mp4">
-                Ваш браузер не поддерживает видео.
-            </video>
-        </div>
-    </div>
-
     <header>
-        <h1>Welcome to the HYUGA hotel </h1>
+        <h1>Welcome to the HYUGA hotel</h1>
     </header>
     <main>
         <section class="gallery">
@@ -144,6 +130,9 @@
                 <a href="https://instagram.com/hyuga_hotel" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
         </section>
+        <section class="save-contact">
+            <button id="save-contact-btn">Save Contact</button>
+        </section>
     </main>
     <footer>
         <div class="company-info">
@@ -155,18 +144,18 @@
     </footer>
 
     <script>
-        // Удаление загрузчика после загрузки страницы
-        window.addEventListener("load", function() {
-            document.body.classList.add("loaded");
-        });
-
-        const videoContainer = document.querySelector('.video-container');
-        const video = videoContainer.querySelector('video');
-
-        // Скрываем видео после его завершения
-        video.addEventListener('ended', () => {
-            videoContainer.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Включить прокрутку
+        document.getElementById('save-contact-btn').addEventListener('click', function() {
+            const vCardData = `BEGIN:VCARD
+VERSION:3.0
+FN:HYUGA Hotel
+TEL:+37498699601
+URL:https://instagram.com/hyuga_hotel
+END:VCARD`;
+            const blob = new Blob([vCardData], { type: 'text/vcard' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'HYUGA_Hotel.vcf';
+            link.click();
         });
     </script>
 </body>
