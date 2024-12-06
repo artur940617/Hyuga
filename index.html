@@ -7,6 +7,35 @@
     <title>Hotel Hyuga on the Edge</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <style>
+    /* Видео-заставка */
+    .video-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .video-wrapper {
+        width: 300px; /* Диаметр круга */
+        height: 300px;
+        border-radius: 50%; /* Делаем круг */
+        overflow: hidden; /* Обрезаем содержимое за пределами круга */
+        background-color: #000; /* Добавляем фон для гладкости */
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Добавляем тень */
+    }
+
+    .video-wrapper video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Заполняем круг, сохраняя пропорции */
+        display: block; /* Убираем возможные артефакты */
+    }
         /* Основные стили */
         body {
             font-family: Arial, sans-serif;
@@ -114,6 +143,16 @@
     </style>
 </head>
 <body>
+    <body>
+    <!-- Видео-заставка -->
+    <div class="video-container">
+        <div class="video-wrapper">
+            <video autoplay muted playsinline>
+                <source src="nfcL.mp4" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+        </div>
+    </div>
     <header>
         <h1>Welcome to the HYUGA hotel</h1>
     </header>
@@ -158,5 +197,20 @@ END:VCARD`;
             link.click();
         });
     </script>
+<script>
+    // Удаление видео-заставки после завершения
+    const videoContainer = document.querySelector('.video-container');
+    const video = videoContainer.querySelector('video');
+
+    video.addEventListener('ended', () => {
+        videoContainer.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Включить прокрутку
+    });
+
+    // Удаление заставки после загрузки страницы (если требуется)
+    window.addEventListener("load", () => {
+        document.body.classList.add("loaded");
+    });
+</script>
 </body>
 </html>
