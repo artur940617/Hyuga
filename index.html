@@ -41,24 +41,33 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            color: #333;
+            color: #FF4500	;
             line-height: 1.6;
         }
 
         header {
-            text-align: center;
-            background: #013220;
-            color: white;
-            padding: 1.5rem 0;
+            background: url('hyugalogo.png') no-repeat center/cover; /* Замените 	'header-image.jpg' на путь к вашей картинке */
+            height: 200px; /* Высота шапки */
         }
+	.centered-title {
+    	text-align: center; /* Центрирует текст по горизонтали */
+    	margin: 0;
+    	font-size: 2rem; /* Увеличивает размер текста */
+    	color: #09331a; /* Цвет заголовка */
+	background-color: #efe2dd; 
+	}
 
         .gallery {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 2rem;
-            flex-wrap: wrap;
-        }
+        display: flex;
+    	justify-content: center;
+    	gap: 1rem;
+    	margin: 0;
+    	flex-wrap: wrap;
+    	background: url('hyugaback.png') no-repeat center/cover;/* Путь к вашему фоновому изображению */
+    	padding: 2rem; /* Дополнительное пространство внутри галереи */
+    	border-radius: 10px; /* Скругленные углы (опционально) */
+    	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень вокруг */
+	}
 
         .gallery img {
             width: 30%;
@@ -115,7 +124,7 @@
 
         footer {
             text-align: center;
-            background: #013220;
+            background: #09331a;
             color: white;
             padding: 1rem 0;
         }
@@ -125,6 +134,7 @@
         }
 
         .company-info a {
+	   font-size: 2rem;
             color: #ffdd57;
             text-decoration: none;
             margin: 0 0.5rem;
@@ -154,8 +164,9 @@
         </div>
     </div>
     <header>
-        <h1>Welcome to the HYUGA hotel</h1>
     </header>
+	<h1 class="centered-title">Welcome to the HYUGA hotel</h1>
+
     <main>
         <section class="gallery">
             <img src="photo(1).jpg" alt="Фото отеля 1">
@@ -167,6 +178,9 @@
             <div class="contact-icons">
                 <a href="tel:+37498699601" aria-label="Telephone"><i class="fas fa-phone"></i></a>
                 <a href="https://instagram.com/hyuga_hotel" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+		 <a href="https://maps.app.goo.gl/6Eb2Mkc2RbVkRU2K8" target="_blank" aria-label="Location">
+            <i class="fas fa-map-marker-alt"></i>
+        </a>
             </div>
         </section>
         <section class="save-contact">
@@ -175,10 +189,11 @@
     </main>
     <footer>
         <div class="company-info">
-            <p>Created by <strong>NFC Leap</strong></p>
+            <p><strong>Created by:</strong></p>
+	    <img src="nfcl.png" alt="NFC Leap Logo">
             <a href="https://instagram.com/nfc_leap" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="https://t.me/nfcleap" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
-            <img src="nfcl.png" alt="NFC Leap Logo">
+            
         </div>
     </footer>
 
@@ -189,6 +204,7 @@ VERSION:3.0
 FN:HYUGA Hotel
 TEL:+37498699601
 URL:https://instagram.com/hyuga_hotel
+ADR;TYPE=WORK:;;Hyuga, 91 6th St, Dsegh
 END:VCARD`;
             const blob = new Blob([vCardData], { type: 'text/vcard' });
             const link = document.createElement('a');
